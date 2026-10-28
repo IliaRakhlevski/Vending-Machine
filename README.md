@@ -2,15 +2,9 @@
 
 [![CI](https://github.com/IliaRakhlevski/Vending-Machine/actions/workflows/ci.yml/badge.svg)](https://github.com/IliaRakhlevski/Vending-Machine/actions/workflows/ci.yml)
 
-A coffee vending machine in C++17: the classic object-oriented design
-interview task, built as a small library around a finite state machine, with
-a console application on top and tests for every row of the transition
-table.
+A C++17 implementation of a coffee vending machine, structured as a small library with a console front end. The machine is modeled as an explicit finite-state machine, with behavior specified by a transition table and tested for every defined transition.
 
-The library decides everything and prints nothing by itself: what the machine
-shows goes through a `UI` object that writes to any `std::ostream`. In the
-program that stream is the console; in the tests it is a string, so a test
-can read the "screen" and check it.
+The core library performs no direct I/O. All user-visible output goes through a UI abstraction that writes to any std::ostream: the console application uses std::cout, while the tests use an in-memory stream to verify what the machine displays.
 
 ![Coins 5 + 2 + 1, a button that does not exist, too little for a latte, then an espresso with change 1](docs/images/purchase.png)
 
