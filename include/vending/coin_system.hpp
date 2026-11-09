@@ -18,7 +18,8 @@ namespace vending {
  * - answers whether change can be paid;
  * - pays money out.
  *
- * Fake coins are rejected here and never reach the machine.
+ * Only valid coins reach it: the console (app/main.cpp) rejects any
+ * other value before calling the machine.
  *
  * There is no hardware: this class is a model in memory, so tests can
  * use it directly and ask it what happened.

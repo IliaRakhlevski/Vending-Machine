@@ -135,7 +135,7 @@ error instead of an event silently ignored.
 
 **The states are plain members of the machine.** Five fields, no heap, no
 indices; `current_` points at one of them, and a transition reads
-`setState(brewing_)`. For the same reason the machine cannot be copied or
+`m.setState(m.brewing())`. For the same reason the machine cannot be copied or
 moved: a copy would point into the original.
 
 **No singleton.** Every test needs its own clean machine with its own cash
