@@ -82,7 +82,9 @@ target_link_libraries(vending PUBLIC vending_warnings)
 # --- sanitizers: enable with -DVENDING_SANITIZE=ON (gcc/clang only) ---
 option(VENDING_SANITIZE "Build with AddressSanitizer and UndefinedBehaviorSanitizer" OFF)
 if(VENDING_SANITIZE AND NOT MSVC)
-    add_compile_options(-fsanitize=address,undefined -fno-omit-frame-pointer)
+    # -fno-sanitize-recover=all: stop on the first UBSan error, so the test fails
+    # (by default UBSan only prints a message and the program keeps running)
+    add_compile_options(-fsanitize=address,undefined -fno-sanitize-recover=all -fno-omit-frame-pointer)
     add_link_options(-fsanitize=address,undefined)
 endif()
 
